@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from '../model/user.model';
 
 
 
@@ -20,15 +21,15 @@ export class UserService {
   ) {}
 
 
-  // registerUser(user: User) {
-  //   return this.httpclient.post<User>(`${this.PATH_OF_API}/api/v1/auth/register`, user);
-  // }
+  registerUser(user: User) {
+    return this.httpclient.post<User>(`${this.PATH_OF_API}/api/user/save`, user);
+  }
 
-  // public login(loginData: any) {
-  //   return this.httpclient.post(this.PATH_OF_API + '/api/v1/auth/authenticate', loginData, {
-  //     headers: this.requestHeader,
-  //   });
-  // }
+  public login(loginData: any) {
+    return this.httpclient.post(this.PATH_OF_API + '/api/v1/auth/authenticate', loginData, {
+      headers: this.requestHeader,
+    });
+  }
   // renewToken(tokenApi : TokenApiModel){
   //   return this.httpclient.post<any>(`${this.PATH_OF_API}refresh`, tokenApi)
   // }
