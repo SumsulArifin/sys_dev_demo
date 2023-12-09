@@ -1,0 +1,269 @@
+
+
+
+
+
+<div *ngIf="authorized">
+  <div class="container mt-5">
+      <div class="card">
+          <div class="card-header">
+              <h3>Create CheckList</h3>
+             
+          </div>
+          <br>
+          <br>  
+          <div class="container">
+            <div class="row">
+              <div class="col-6">
+
+                <form [formGroup]="form2" (ngSubmit)="onSubmit()">
+
+                
+        
+                  <fieldset>
+        
+                    <label for="details">Details:</label>
+                    <input type="text" id="details" formControlName="details">
+        
+        
+        
+                    <label for="remark">Remark:</label>
+                    <input type="text" id="remark" name="remark" formControlName="remark">
+        
+        
+                  </fieldset>
+        
+                 <br>
+                 <br>
+        
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                            
+                    <button class="btn btn-primary"  type="button" (click)="addDataToList()">Add to List</button>
+                    <button type="submit" class="btn btn-primary">Save List</button>
+                  </div>
+        
+                </form>
+        
+        
+        
+                <div class="card-body table-responsive p-0" style="height: 300px;">
+                  <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                      <tr>
+                        <!-- <th>ID</th> -->
+                        <th>Details</th>
+                        <th>Remark</th>
+                        <th>Action</th>
+        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let v of dataList">
+                        <!-- <td>{{v.id}}</td> -->
+                        <td>{{v.details}}</td>
+                        <td>{{v.remark}}</td>
+        
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+              </div>
+
+              <div class="col-6">
+                <div class="wrapper">
+                  <div class="row">
+                    <div class="col-12">
+                
+                      <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">View All CheckList</h3>
+                
+                          
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0" style="height: 300px;">
+                          <table class="table table-head-fixed text-nowrap">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Details</th>
+                                <th>Remark</th>
+                                <th>Action</th>
+                
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let v of list">
+                                <td>{{v.sl}}</td>
+                                <td>{{v.details}}</td>
+                                <td>{{v.remark}}</td>
+                                
+                
+                                <!-- <td>Image</td> -->
+                                <td><button type="button" [routerLink]="['/editData/', v.sl, 'edit']"
+                                    class="btn-primary">Edit</button> &nbsp;&nbsp;
+                
+                                  <button type="button" (click)="deletePresc(v.sl)" class="btn-danger">Delete</button>
+                                </td>
+                
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- /.card-body -->
+                      </div>
+                      <!-- /.card -->
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <html>
+
+<body>
+  <br>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-primary me-md-2" type="button">Report Genarate</button>
+
+  </div>
+ <br>
+ <br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <form [formGroup]="form2" (ngSubmit)="onSubmit()">
+
+          <h1> Check List Form</h1>
+
+          <fieldset>
+
+            <label for="details">Details:</label>
+            <input type="text" id="details" formControlName="details">
+
+
+
+            <label for="remark">Remark:</label>
+            <input type="text" id="remark" name="remark" formControlName="remark">
+
+
+          </fieldset>
+
+         <br>
+         <br>
+
+          <div class="d-grid gap-2 col-6 mx-auto">
+                    
+            <button class="btn btn-primary"  type="button" (click)="addDataToList()">Add to List</button>
+            <button type="submit" class="btn btn-primary">Save List</button>
+          </div>
+
+        </form>
+
+
+
+        <div class="card-body table-responsive p-0" style="height: 300px;">
+          <table class="table table-head-fixed text-nowrap">
+            <thead>
+              <tr>
+               
+                <th>Details</th>
+                <th>Remark</th>
+                <th>Action</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let v of dataList">
+               
+                <td>{{v.details}}</td>
+                <td>{{v.remark}}</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="wrapper">
+          <div class="row">
+            <div class="col-12">
+        
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Check List</h3>
+        
+                  
+                </div>
+              
+                <div class="card-body table-responsive p-0" style="height: 300px;">
+                  <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Details</th>
+                        <th>Remark</th>
+                        <th>Action</th>
+        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let v of list">
+                        <td>{{v.sl}}</td>
+                        <td>{{v.details}}</td>
+                        <td>{{v.remark}}</td>
+                        
+        
+                     
+                        <td><button type="button" [routerLink]="['/editData/', v.sl, 'edit']"
+                            class="btn-primary">Edit</button> &nbsp;&nbsp;
+        
+                          <button type="button" (click)="deletePresc(v.sl)" class="btn-danger">Delete</button>
+                        </td>
+        
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+             
+              </div>
+             
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html> -->
+
